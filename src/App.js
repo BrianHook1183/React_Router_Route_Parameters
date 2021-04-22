@@ -1,5 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Route, Switch } from "react-router-dom";
+import UserProfile from "./UserProfile";
 
 // Update this app to have /, /user/:userId, and /user/new routes. Any other route displays a 404 message.
 // /user/:userId displays the UserProfile for the specified ID
@@ -7,6 +8,18 @@ import { Link } from "react-router-dom";
 // Any other route displays "404 Not Found"
 
 function App() {
+  function HomePage() {
+    return <p>Home Page</p>;
+  }
+
+  function NotFound() {
+    return <h1>404 Not Found</h1>;
+  }
+
+  function NewUserBlocked() {
+    return <p>Unable to create a new user</p>;
+  }
+
   return (
     // No need to add <Router>, it has been added to ./index.js
     <div className="App">
@@ -21,6 +34,20 @@ function App() {
             </Link>
           </div>
         ))}
+      <Switch>
+        <Route exact={true} path="/">
+          <HomePage />
+        </Route>
+        <Route path="/user/new">
+          <NewUserBlocked />
+        </Route>
+        <Route path="/user/:userId">
+          <UserProfile />
+        </Route>
+        <Route>
+          <NotFound />
+        </Route>
+      </Switch>
     </div>
   );
 }
