@@ -17,7 +17,6 @@ function UserProfile() {
           `https://jsonplaceholder.typicode.com/users/${userId}`,
           { signal: abortController.signal }
         );
-        
 
         const user = await response.json();
         setUser(user);
@@ -34,8 +33,6 @@ function UserProfile() {
       abortController.abort(); // cancels any pending request or response
     };
   }, [userId]);
-
-  // You do not need to change this component
 
   if (user.id) {
     return Object.entries(user).map(([key, value]) => (
