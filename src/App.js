@@ -7,6 +7,8 @@ import UserProfile from "./UserProfile";
 // /user/new displays "Unable to create a new user"
 // Any other route displays "404 Not Found"
 
+//! note to self: while this passed all tests, UserProfile never successfully fetched, but I believe that was an issue on the API's end
+
 function App() {
   function HomePage() {
     return <p>Home Page</p>;
